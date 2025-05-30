@@ -2,28 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI Game Drop</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <!-- fixed top header -->
   <header class="site-header">
     <div class="logo">🤖 AI Game Drop</div>
     <div class="tagline">1 AI-generated game every day</div>
   </header>
 
-  <main class="site-main">
-    <aside class="ad-slot ad-left">[ Your Ad Here ]</aside>
+  <!-- main grid container -->
+  <main class="container">
+    <!-- left ad slot -->
+    <aside class="sidebar ad-left">
+      <div class="ad-box">Your Ad Here</div>
+    </aside>
 
-    <section class="game-container">
-      <h2>Game #1: Click to Score</h2>
-      <iframe src="games/day1/index.html" frameborder="0"></iframe>
+    <!-- game display area -->
+    <section class="game-area">
+      <h2 class="game-title">Game #1 – Click to Score</h2>
+      <div class="game-frame">
+        <iframe
+          src="games/day1/index.html"
+          frameborder="0"
+          title="Game 1: Click to Score"
+        ></iframe>
+      </div>
     </section>
 
-    <aside class="ad-slot ad-right">[ Your Ad Here ]</aside>
+    <!-- right ad slot -->
+    <aside class="sidebar ad-right">
+      <div class="ad-box">Your Ad Here</div>
+    </aside>
   </main>
 
+  <!-- footer with archive link -->
   <footer class="site-footer">
     <a href="#" class="archive-link">📚 View all past drops</a>
   </footer>
