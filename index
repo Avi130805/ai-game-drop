@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Game Drop</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>🎮 AI Game Drop</h1>
+    <p>1 AI-generated game every day</p>
+  </header>
+
+  <div class="layout">
+    <aside class="ad-left">[AD SPACE]</aside>
+
+    <main class="game-frame">
+      <iframe src="/games/day1/index.html" width="800" height="600"></iframe>
+    </main>
+
+    <aside class="ad-right">[AD SPACE]</aside>
+  </div>
+
+  <footer>
+    <p><a href="#">View all games</a></p>
+  </footer>
+</body>
+</html>
