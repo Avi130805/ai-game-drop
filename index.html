@@ -6,10 +6,10 @@
   <title>AI Game Drop</title>
 
   <!-- Favicons -->
-  <link rel="icon"             href="assets/images/favicon2.png?v=2" type="image/png">
-  <link rel="shortcut icon"    href="assets/images/favicon2.png?v=2" type="image/png">
-  <link rel="icon"             href="assets/images/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon"    href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon"             href="favicon2.png"           type="image/png">
+  <link rel="shortcut icon"    href="favicon2.png"           type="image/png">
+  <link rel="icon"             href="favicon.ico"            type="image/x-icon">
+  <link rel="shortcut icon"    href="favicon.ico"            type="image/x-icon">
   <link rel="apple-touch-icon" href="assets/images/favicon2.png">
 
   <!-- Google Font -->
@@ -29,29 +29,40 @@
     <div class="tagline">1 AI-generated game every day</div>
   </header>
 
-  <!-- Main layout -->
-  <main class="container">
-    <!-- Left ad slot -->
-    <aside class="sidebar ad-left">
-      <div class="ad-box">Your Ad Here</div>
-    </aside>
-
-    <!-- Center game area -->
-    <section class="game-area">
-      <h2 class="game-title">Game #1 – Click to Score</h2>
-      <div class="game-frame">
-        <iframe
-          src="games/day1/index.html"
-          frameborder="0"
-          title="Game 1: Click to Score"
-        ></iframe>
+  <!-- Main content starts below header -->
+  <main class="game-grid-container">
+    <!-- Example grid cards; update href and titles as you add games -->
+    <a href="games/day1/index.html" class="game-card">
+      <div class="card-content">
+        <span class="card-number">Day 1</span>
+        <span class="card-title">Click to Score</span>
       </div>
-    </section>
-
-    <!-- Right ad slot -->
-    <aside class="sidebar ad-right">
-      <div class="ad-box">Your Ad Here</div>
-    </aside>
+    </a>
+    <a href="games/day2/index.html" class="game-card">
+      <div class="card-content">
+        <span class="card-number">Day 2</span>
+        <span class="card-title">Memory Match</span>
+      </div>
+    </a>
+    <a href="games/day3/index.html" class="game-card">
+      <div class="card-content">
+        <span class="card-number">Day 3</span>
+        <span class="card-title">Dodge the Blocks</span>
+      </div>
+    </a>
+    <a href="games/day4/index.html" class="game-card">
+      <div class="card-content">
+        <span class="card-number">Day 4</span>
+        <span class="card-title">Shape Shooter</span>
+      </div>
+    </a>
+    <a href="games/day5/index.html" class="game-card">
+      <div class="card-content">
+        <span class="card-number">Day 5</span>
+        <span class="card-title">Color Flip</span>
+      </div>
+    </a>
+    <!-- Add more <a class="game-card">…</a> items as /games/day6, day7, … -->
   </main>
 
   <!-- Footer with archive link -->
