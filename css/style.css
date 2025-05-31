@@ -1,22 +1,23 @@
 :root {
-  --bg: #121212;
-  --panel: #1E1E1E;
-  --fg: #EAEAEA;
-  --accent: #00E5FF;
+  --bg: #000000;            /* pure black background */
+  --card-bg: #1E1E1E;        /* dark gray for cards */
+  --card-border: #333333;    /* slightly lighter border */
+  --accent: #00E5FF;         /* neon-cyan accent */
+  --fg: #EAEAEA;             /* light text color */
   --shadow: rgba(0, 229, 255, 0.3);
   --max-width: 1200px;
 }
 
+/* Reset and base styles */
 * {
   box-sizing: border-box;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: 'Roboto', sans-serif;
-  line-height: 1.5;
   min-height: 100vh;
 }
 
@@ -25,7 +26,7 @@ body {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 70px;
-  background: var(--panel);
+  background: var(--card-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,99 +34,90 @@ body {
   box-shadow: 0 2px 10px var(--shadow);
   z-index: 10;
 }
-
 .site-header .logo {
   font-size: 1.4rem;
   font-weight: 700;
 }
-
 .site-header .tagline {
   font-weight: 300;
   opacity: 0.8;
 }
 
-/* Main grid layout */
-.container {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  gap: 1rem;
+/* Main grid container (below header) */
+.game-grid-container {
+  /* push content below header */
+  margin: 100px auto 2rem;
   max-width: var(--max-width);
-  margin: 100px auto 2rem; /* pushes below header */
   padding: 0 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  /* 1fr columns, but minimum 160px width for each square */
+  gap: 1rem;
 }
 
-.sidebar {
-  display: flex;
-  justify-content: center;
-}
-
-.ad-box {
-  width: 100%;
-  max-width: 300px;
-  height: 600px;
-  background: var(--panel);
-  border: 1px solid #2A2A2A;
+/* Individual square card */
+.game-card {
+  display: block;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
-  font-size: 0.9rem;
+  aspect-ratio: 1 / 1; /* 1:1 square */
+  text-decoration: none;
+  color: var(--fg);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Game area styling */
-.game-area {
+/* Hover/Focus effect */
+.game-card:hover,
+.game-card:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px var(--shadow);
+  border-color: var(--accent);
+}
+
+/* Center content inside the square */
+.card-content {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
-
-.game-title {
-  color: var(--accent);
-  text-shadow: 0 0 8px var(--shadow);
-  margin-bottom: 1rem;
+.card-number {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 4px;
 }
-
-.game-frame {
-  background: var(--panel);
-  padding: 0.5rem;
-  border-radius: 8px;
-  box-shadow: 0 0 20px var(--shadow);
-}
-
-.game-frame iframe {
-  width: 100%;
-  height: 450px;
-  border: none;
-  border-radius: 6px;
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: 140px;
+  margin: 0 auto;
 }
 
 /* Footer */
 .site-footer {
   text-align: center;
   padding: 1.5rem 0;
-  background: var(--panel);
-  border-top: 1px solid #2A2A2A;
+  background: var(--card-bg);
+  border-top: 1px solid var(--card-border);
 }
-
 .archive-link {
   color: var(--accent);
   text-decoration: none;
   font-weight: 400;
 }
-
 .archive-link:hover {
   text-decoration: underline;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: 1fr;
-    margin-top: 120px;
-  }
-  .sidebar {
-    display: none;
-  }
-  .game-frame iframe {
-    height: 300px;
+/* Responsive: slightly adjust gap on small screens */
+@media (max-width: 480px) {
+  .game-grid-container {
+    gap: 0.5rem;
   }
 }
