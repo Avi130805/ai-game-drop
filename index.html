@@ -1,73 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>AI Game Drop</title>
 
   <!-- Favicons -->
-  <link rel="icon"             href="favicon2.png"           type="image/png">
-  <link rel="shortcut icon"    href="favicon2.png"           type="image/png">
-  <link rel="icon"             href="favicon.ico"            type="image/x-icon">
-  <link rel="shortcut icon"    href="favicon.ico"            type="image/x-icon">
-  <link rel="apple-touch-icon" href="assets/images/favicon2.png">
+  <link rel="icon"          href="assets/images/favicon2.png" type="image/png" />
+  <link rel="shortcut icon" href="assets/images/favicon2.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/images/favicon2.png" />
 
-  <!-- Google Font -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Font & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- Fixed site header -->
+  <!-- Header -->
   <header class="site-header">
     <div class="logo">🤖 AI Game Drop</div>
     <div class="tagline">1 AI-generated game every day</div>
   </header>
 
-  <!-- Main content starts below header -->
-  <main class="game-grid-container">
-    <!-- Example grid cards; update href and titles as you add games -->
-    <a href="games/day1/index.html" class="game-card">
-      <div class="card-content">
-        <span class="card-number">Day 1</span>
-        <span class="card-title">Click to Score</span>
-      </div>
+  <!-- SQUARE-CARD GRID -->
+  <main class="grid">
+    <!-- Duplicate or remove cards as you add games -->
+    <a class="card" href="games/day1/index.html">
+      <span class="day">Day&nbsp;1</span>
+      <span class="title">Click&nbsp;to&nbsp;Score</span>
     </a>
-    <a href="games/day2/index.html" class="game-card">
-      <div class="card-content">
-        <span class="card-number">Day 2</span>
-        <span class="card-title">Memory Match</span>
-      </div>
+
+    <a class="card" href="games/day2/index.html">
+      <span class="day">Day&nbsp;2</span>
+      <span class="title">Memory&nbsp;Match</span>
     </a>
-    <a href="games/day3/index.html" class="game-card">
-      <div class="card-content">
-        <span class="card-number">Day 3</span>
-        <span class="card-title">Dodge the Blocks</span>
-      </div>
+
+    <a class="card" href="games/day3/index.html">
+      <span class="day">Day&nbsp;3</span>
+      <span class="title">Dodge&nbsp;Blocks</span>
     </a>
-    <a href="games/day4/index.html" class="game-card">
-      <div class="card-content">
-        <span class="card-number">Day 4</span>
-        <span class="card-title">Shape Shooter</span>
-      </div>
+
+    <a class="card" href="games/day4/index.html">
+      <span class="day">Day&nbsp;4</span>
+      <span class="title">Shape&nbsp;Shooter</span>
     </a>
-    <a href="games/day5/index.html" class="game-card">
-      <div class="card-content">
-        <span class="card-number">Day 5</span>
-        <span class="card-title">Color Flip</span>
-      </div>
+
+    <a class="card" href="games/day5/index.html">
+      <span class="day">Day&nbsp;5</span>
+      <span class="title">Color&nbsp;Flip</span>
     </a>
-    <!-- Add more <a class="game-card">…</a> items as /games/day6, day7, … -->
   </main>
 
-  <!-- Footer with archive link -->
+  <!-- Footer -->
   <footer class="site-footer">
-    <a href="#" class="archive-link">📚 View all past drops</a>
+    <a class="archive-link" href="#">📚 View all past drops</a>
   </footer>
 
 </body>
