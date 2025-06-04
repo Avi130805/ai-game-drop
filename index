@@ -7,10 +7,13 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header>
-    <h1>🎮 AI Game Drop</h1>
-    <p>1 AI-generated game every day</p>
+  <header class="site-header">
+    <div class="logo">🎮 AI Game Drop</div>
   </header>
+  <section class="hero">
+    <h1>AI Game Drop</h1>
+    <p class="tagline">New AI-generated mini games every day</p>
+  </section>
 
   <div class="layout">
     <aside class="ad-left">[AD SPACE]</aside>
@@ -22,8 +25,8 @@
     <aside class="ad-right">[AD SPACE]</aside>
   </div>
 
-  <footer>
-    <p><a href="#">View all games</a></p>
+  <footer class="site-footer">
+    <a class="archive-link" href="#">View all games</a>
   </footer>
 </body>
 </html>
