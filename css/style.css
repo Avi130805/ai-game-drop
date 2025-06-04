@@ -38,7 +38,7 @@ body {
 /* GRID CONTAINER */
 .grid {
   max-width: var(--max-width);
-  margin: 100px auto 2rem;        /* pushes below header */
+  margin: 100px auto 2rem;        /* 70px header + extra spacing */
   padding-inline: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
