@@ -1,10 +1,10 @@
 :root {
-  --bg: #000;
+  --bg: #0d0d0d;
   --card-bg: #1e1e1e;
   --border: #333;
-  --accent: #00e5ff;
-  --fg: #eaeaea;
-  --shadow: 0 0 12px rgba(0, 229, 255, 0.35);
+  --accent: #ff4081;
+  --fg: #f5f5f5;
+  --shadow: 0 0 14px rgba(255, 64, 129, 0.35);
   --max-width: 1200px;
 }
 
@@ -12,7 +12,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--bg);
+  background: linear-gradient(135deg, #1e1e1e 0%, #0d0d0d 80%);
   color: var(--fg);
   font-family: 'Roboto', sans-serif;
   min-height: 100vh;
@@ -23,22 +23,39 @@ body {
   position: fixed;
   top: 0; inset-inline: 0;
   height: 70px;
-  background: var(--card-bg);
+  background: rgba(0,0,0,0.7);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding-inline: 1.5rem;
   box-shadow: var(--shadow);
   z-index: 20;
 }
 
-.logo   { font-size: 1.4rem; font-weight: 700; }
-.tagline{ font-weight: 300; opacity: .8; }
+.logo   { font-size: 1.6rem; font-weight: 700; }
+.tagline{ font-weight: 300; opacity: .85; }
+
+/* HERO SECTION */
+.hero {
+  margin-top: 70px;
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  background: linear-gradient(135deg, #222 0%, #111 80%);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: .5rem;
+}
+
+.hero .tagline {
+  font-size: 1.1rem;
+}
 
 /* GRID CONTAINER */
 .grid {
   max-width: var(--max-width);
-  margin: 100px auto 2rem;        /* 70px header + extra spacing */
+  margin: 40px auto 2rem;
   padding-inline: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -51,7 +68,7 @@ body {
   aspect-ratio: 1 / 1;            /* perfect square */
   background: var(--card-bg);
   border: 2px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
   color: var(--fg);
   display: flex;
@@ -59,6 +76,19 @@ body {
   justify-content: center;
   align-items: center;
   transition: transform .15s, box-shadow .15s, border-color .15s;
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, var(--accent));
+  opacity: 0;
+  transition: opacity .25s;
+}
+.card:hover::before,
+.card:focus-visible::before {
+  opacity: 0.2;
 }
 .card:hover,
 .card:focus-visible {
