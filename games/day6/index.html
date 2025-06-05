@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cube Timer</title>
+  <style>
+    body{background:black;color:white;text-align:center;font-family:Arial,Helvetica,sans-serif;padding:20px;}
+    button{margin:6px;padding:10px 20px;font-size:16px;border-radius:4px;border:none;background:#444;color:white;}
+    button:hover{background:#666;cursor:pointer;}
+    #timeDisplay{font-size:64px;color:#ff4081;margin:20px;cursor:pointer;}
+    .hidden{display:none;}
+  </style>
+</head>
+<body>
+  <div id="menu">
+    <h2>Cube Timer</h2>
+    <button onclick="showTimer('3x3')">3×3 Timer</button>
+    <button onclick="showTimer('6x6')">6×6 Timer</button>
+    <button onclick="showAnalysisMenu()">Analysis</button>
+  </div>
+
+  <div id="timerPage" class="hidden">
+    <h2 id="timerTitle"></h2>
+    <div id="timeDisplay" onclick="toggleTimer()">00.00</div>
+    <p>Tap the time to start/stop</p>
+    <button onclick="backToMenu()">Back</button>
+  </div>
+
+  <div id="analysisMenu" class="hidden">
+    <h2>Select Cube Size</h2>
+    <button onclick="showAnalysis('3x3')">3×3 Analysis</button>
+    <button onclick="showAnalysis('6x6')">6×6 Analysis</button>
+    <button onclick="backToMenu()">Back</button>
+  </div>
+
+  <div id="analysisPage" class="hidden">
+    <h2 id="analysisTitle"></h2>
+    <div id="stats"></div>
+    <button onclick="showAnalysisMenu()">Back</button>
+  </div>
+
+<script>
+const DATA_KEY='cubeTimerData';
+let data={'3x3':[], '6x6':[]};
+let currentSize=null;
+let startTime=0;
+let running=false;
+let timerInterval=null;
+
+function init(){
+  const saved=localStorage.getItem(DATA_KEY);
+  if(saved){
+    try{ data=JSON.parse(saved); }catch(e){}
+  }else{
+    fetch('cube_times.json')
+      .then(r=>r.json())
+      .then(j=>{ data=j; save(); })
+      .catch(()=>{ data={"3x3":[51.55,61.37,73.58,62.07,55.24,53.3,59.33,40.75,64.41,41.1,65.13,57.48,54.48,59.68,73.27,53.15,56.88],"6x6":[]}; save(); });
+  }
+}
+function save(){ localStorage.setItem(DATA_KEY, JSON.stringify(data)); }
+function hideAll(){ ['menu','timerPage','analysisMenu','analysisPage'].forEach(id=>document.getElementById(id).classList.add('hidden')); }
+function backToMenu(){ hideAll(); document.getElementById('menu').classList.remove('hidden'); running=false; clearInterval(timerInterval); }
+function showTimer(size){ hideAll(); currentSize=size; document.getElementById('timerTitle').textContent=size+' Timer'; document.getElementById('timeDisplay').textContent='00.00'; running=false; clearInterval(timerInterval); document.getElementById('timerPage').classList.remove('hidden'); }
+function toggleTimer(){ if(!running){ startTime=performance.now(); running=true; timerInterval=setInterval(updateDisplay,50); } else { clearInterval(timerInterval); running=false; const elapsed=(performance.now()-startTime)/1000; const t=Number(elapsed.toFixed(2)); if(confirm(`Time recorded: ${t} seconds\n\nSave attempt?`)){ data[currentSize].push(t); save(); alert('Saved'); } else { alert('Discarded'); } document.getElementById('timeDisplay').textContent='00.00'; }}
+function updateDisplay(){ const elapsed=(performance.now()-startTime)/1000; document.getElementById('timeDisplay').textContent=elapsed.toFixed(2); }
+function showAnalysisMenu(){ hideAll(); document.getElementById('analysisMenu').classList.remove('hidden'); }
+function showAnalysis(size){ hideAll(); document.getElementById('analysisTitle').textContent=size+' Analysis'; const statsDiv=document.getElementById('stats'); statsDiv.innerHTML=''; const times=data[size]||[]; if(times.length===0){ statsDiv.textContent='No recorded attempts yet.'; } else { const tot=times.length; const avg=average(times); const ma15=average(times.slice(-15)); const ma5=average(times.slice(-5)); const fast=Math.min(...times); const slow=Math.max(...times); const threshold=size==='3x3'?55:300; const sub=times.filter(t=>t<threshold).length; const lines=[`Lifetime Average: ${avg.toFixed(2)} seconds`,`Moving Avg (last 15): ${ma15.toFixed(2)} seconds`,`Moving Avg (last 5): ${ma5.toFixed(2)} seconds`,`Fastest Solve: ${fast.toFixed(2)} seconds`,`Slowest Solve: ${slow.toFixed(2)} seconds`,`Total Solves (lifetime): ${tot}`,`${size==='3x3'?'Solves under 55 seconds':'Solves under 5 minutes'}: ${sub}`]; lines.forEach(txt=>{ const p=document.createElement('p'); p.textContent=txt; statsDiv.appendChild(p); }); } document.getElementById('analysisPage').classList.remove('hidden'); }
+function average(arr){ return arr.reduce((a,b)=>a+b,0)/arr.length; }
+window.onload=init;
+</script>
+</body>
+</html>
